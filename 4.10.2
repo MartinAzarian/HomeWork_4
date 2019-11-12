@@ -1,0 +1,109 @@
+package com.company;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Random rand = new Random();
+
+        int[][] matrix = new int[5][5];
+
+        int SIDERow = 5;
+        int SIDEColumn = 5;
+
+        int[][] rezult = new int[SIDERow][SIDEColumn];
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                int matrixelement = rand.nextInt(89);
+                matrixelement += 10;
+                matrix[i][j] = matrixelement;
+            }
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("-------Menu-------");
+        System.out.println("1 For rotating 90*");
+        System.out.println("2 For rotating 180*");
+        System.out.println("3 For rotating 270*");
+        System.out.println("4 for EXIT");
+        System.out.println("------------------");
+
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+       int x = count;
+
+        if (count > 0 && count <= 3)//stugec tiva 0-3 te che
+        {
+            do {//90
+                count = 0;
+                for (int i = 0; i < SIDERow; i++) {
+                    for (int j = 0; j < SIDEColumn; j++) {
+                        rezult[i][j] = matrix[SIDERow - j - 1][i];
+                        if ( count < x)
+                        {
+                            count += 2;
+                        }
+                        if ( count > 1 ) {
+                            do {//180
+
+                                for ( int l = 0; l < SIDERow; l++) {
+                                    for ( int p = 0; p < SIDEColumn; p++) {
+                                        matrix[l][p] = rezult[SIDERow - p - 1][l];
+                                        if ( count != x )
+                                        {
+                                            count++;
+                                        }
+
+                                        if ( count == 3 ) {//270
+                                            for ( int m = 0; m < SIDERow; m++) {
+                                                for ( int t = 0; t < SIDEColumn; t++) {
+                                                    rezult[m][t] = matrix[SIDERow - t - 1][m];
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+
+                            }
+                            while (count <= 1);
+                        }
+
+
+                    }
+
+                }
+
+
+            } while (count < 1);
+
+
+            if (x % 2 == 0) {
+                for (int i = 0; i < matrix.length; i++) {
+                    for (int j = 0; j < matrix[i].length; j++) {
+                        System.out.print(matrix[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+
+            } else {
+                for ( int i = 0; i < rezult.length; i++) {
+                    for (int j = 0; j < rezult[i].length; j++) {
+                        System.out.print(rezult[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+            }
+
+        }
+    }
+}
