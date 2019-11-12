@@ -1,0 +1,61 @@
+package com.company;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Random rand = new Random();
+
+        int[][] matrix = new int[15][15];
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                int matrixelement = rand.nextInt(89);
+                matrixelement += 10;
+                matrix[i][j] = matrixelement;
+            }
+        }
+
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        int SIDERow = 15;
+        int SIDEColumn = 15;
+
+        int[][] rezult = new int[SIDERow][SIDEColumn];
+
+            for ( int i = 0; i < SIDERow; i++) {
+                for ( int j = 0; j < SIDEColumn; j++) {
+                    rezult[i][j] = matrix[SIDERow - j - 1][i];
+                }
+
+            }
+
+     
+        for ( int i = 0; i < SIDERow; i++) {
+            for ( int j = 0; j < SIDEColumn; j++) {
+                matrix[i][j] = rezult[SIDERow - j - 1][i];
+            }
+        }
+
+        System.out.println();
+
+        for ( int i = 0; i < matrix.length; i++ ) {
+            for ( int j = 0; j < matrix[i].length; j++ ) {
+                System.out.print( matrix[i][j] + " " );
+            }
+            System.out.println();
+        }
+
+
+
+
+    }
+}
