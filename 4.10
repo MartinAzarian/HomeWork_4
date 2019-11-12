@@ -9,6 +9,9 @@ public class Main {
         Random rand = new Random();
 
         int [][]matrix = new int[5][5];
+        int SIDERow = 5;
+        int SIDEColumn = 5;
+
         for ( int i = 0; i < matrix.length; i++ ){
             for( int j = 0; j < matrix[i].length; j++)
             {
@@ -32,26 +35,92 @@ public class Main {
         System.out.println("3 For rotating 270*");
         System.out.println("4 for EXIT");
         System.out.println("------------------");
-        
+
         Scanner scanner = new Scanner(System.in);
-        int inputnumber = scanner.nextInt();
-        
-        switch (inputnumber)
+        int count = scanner.nextInt();
+
+
+        if ( count > 0 && count <= 3)
         {
-            case 1:
+            if ( count == 1 )
+            {
+                int[][] rezult = new int[SIDERow][SIDEColumn];
+
+                for ( int i = 0; i < SIDERow; i++) {
+                    for ( int j = 0; j < SIDEColumn; j++) {
+                        rezult[i][j] = matrix[SIDERow - j - 1][i];
+                    }
+
+                }
+
+                System.out.println();
+
+                for ( int i = 0; i < rezult.length; i++ ) {
+                    for ( int j = 0; j < rezult[i].length; j++ ) {
+                        System.out.print(rezult[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+            }
+
+            else if ( count == 2){
+
+                int[][] rezult = new int[SIDERow][SIDEColumn];
+
+                for ( int i = 0; i < SIDERow; i++) {
+                    for ( int j = 0; j < SIDEColumn; j++) {
+                        rezult[i][j] = matrix[SIDERow - j - 1][i];
+                    }
+                }
+
+                for ( int i = 0; i < SIDERow; i++) {
+                    for ( int j = 0; j < SIDEColumn; j++) {
+                        matrix[i][j] = rezult[SIDERow - j - 1][i];
+                    }
+                }
+
+                System.out.println();
+
+                for ( int i = 0; i < matrix.length; i++ ) {
+                    for ( int j = 0; j < matrix[i].length; j++ ) {
+                        System.out.print( matrix[i][j] + " " );
+                    }
+                    System.out.println();
+                }
+            }
+            else {
+                int[][] rezult = new int[SIDERow][SIDEColumn];
+
+                for ( int i = 0; i < SIDERow; i++) {
+                    for ( int j = 0; j < SIDEColumn; j++) {
+                        rezult[i][j] = matrix[SIDERow - j - 1][i];
+                    }
+                }
+
+                for ( int i = 0; i < SIDERow; i++) {
+                    for ( int j = 0; j < SIDEColumn; j++) {
+                        matrix[i][j] = rezult[SIDERow - j - 1][i];
+                    }
+                }
                 
-                break;
-                
-            case 2:
-                
-                break;
-                
-            case  3:
-                
-                break;
-                
-            default:
-                
+
+                for ( int i = 0; i < SIDERow; i++) {
+                    for ( int j = 0; j < SIDEColumn; j++) {
+                        rezult[i][j] = matrix[SIDERow - j - 1][i];
+                    }
+
+                }
+
+                System.out.println();
+
+                for ( int i = 0; i < rezult.length; i++ ) {
+                    for ( int j = 0; j < rezult[i].length; j++ ) {
+                        System.out.print(rezult[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+
+            }
         }
 
 
